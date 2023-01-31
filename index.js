@@ -5,6 +5,15 @@ let listTask = document.getElementById("list li");
 let checked = document.querySelector("checked");
 let today = new Date();
 let dateOfDay = document.querySelector("h1");
+const dayString = [
+  "Lundi",
+  "Mardi",
+  "Mercredi",
+  "Jeudi",
+  "Vendredi",
+  "Samedi",
+  "Dimanche",
+];
 
 function storeList() {
   window.localStorage.list = list.innerHTML;
@@ -25,23 +34,29 @@ function dateParser(chaine) {
   return newDate;
 }
 
-dateOfDay.innerHTML = dateParser(today);
+dateOfDay.innerHTML = dayString[today.getDay()] + " " + dateParser(today);
 
 getTodos();
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  list.innerHTML += `<li>${task.value}</li>`;
+  list.innerHTML += `<li class="init">${task.value}</li>`;
   task.value = "";
   storeList();
 });
 
 list.addEventListener("click", (e) => {
-  if (e.target.classList.contains("checked")) {
+  if (e.target.classList.contains("init")) {
+    e.target.classList.add("checked");
+    storeList();
+  } else if (e.target.classList.contains("checked")) {
+    e.target.classList.add("done");
+    storeList();
+  } else if (e.target.classList.contains("done")) {
+    console.log("done !");
     e.target.remove();
     storeList();
   } else {
-    e.target.classList.add("checked");
-    storeList();
+    console.log("?");
   }
 });
