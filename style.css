@@ -1,94 +1,147 @@
-body{
-    background-color: #276D75;
-    height: 100vh;
-    width: 100%;
-    display: inline-block;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+body {
+  background-color: #276d75;
+  height: 100vh;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
-form{
-    width: 50%;
-    height: auto;
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    color: #276D75;
-    border-radius: 10px;
-    border: 7px solid #fff;
+form {
+  width: 50%;
+  height: auto;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  color: #276d75;
+  border-radius: 10px;
+  border: 7px solid #fff;
 }
-h1{display: block;
-width: 100%;
-padding: 30px 0px;
-color: #fff;}
-h2{
-    background: #1e9fad;
-    color: white;
-    padding: 10px;
+h1 {
+  display: block;
+  width: 100%;
+  padding: 30px 0px;
+  color: #fff;
 }
-#todo{
-    width: 70%;
-border-radius: 10px;
-border: 3px solid #fbbb34;
-line-height: 2rem;
-font-weight: 600;
-color: #276D75;
-padding: 5px;
+h2 {
+  background: #1e9fad;
+  color: white;
+  padding: 10px;
 }
-#todo::placeholder{
-    padding: 5px;
-    font-weight: 500;
-    color: #333;
+#todo {
+  width: 70%;
+  border-radius: 10px;
+  border: 3px solid #fbbb34;
+  line-height: 2rem;
+  font-weight: 600;
+  color: #276d75;
+  padding: 5px;
 }
-#list li:hover{
-    cursor: pointer;
+#todo::placeholder {
+  padding: 5px;
+  font-weight: 600;
+  color: #333;
 }
-#list{
-    list-style: none;
-    text-align: left;
-    font-weight: 600;
-    color: #15141a;
-    line-height: 1.6rem;
+#list li:hover {
+  cursor: pointer;
 }
-#list li:before{
-    content: "📝";
-    margin-right: 5px;
+#list {
+  list-style: none;
+  text-align: left;
+  font-weight: 600;
+  color: #15141a;
+  line-height: 1.6rem;
 }
-#list li:hover:before{
-    content: "✔️";
-    border-radius: 60px;
-    font-size: 1rem;
-    background-color: rgba(255, 255, 255, 0.8);
+#list li:before {
+  content: "📝";
+  margin-right: 5px;
 }
-.checked:before{
-    content: "✔️" !important;
-    margin-right: 5px;
+#list li:hover:before {
+  border-radius: 60px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
 }
-.checked:hover:before{
-    content: "❌" !important;
+/*Initialisation state*/
+.init:hover:before {
+  content: "🛠️" !important;
 }
-.checked:after{
-    content: "Effectué !";
-    text-transform: uppercase;;
-    padding-left: 5px;
-    font-style: italic;
-    font-size: 0.7rem;
-    color: #fff;
-    background-color: green;
-    padding: 4px;
-    margin: 5px;
-    border-radius: 30px;
-    font-weight: 600;
-    transition:ease-in 0.2s;
+.init:hover:after {
+  content: "Traiter";
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #fff;
+  padding: 5px;
+  background-color: orange;
+  transition: ease-out 0.2s;
+  box-shadow: 2px 2px 2px #000;
+  border-radius: 60px;
+}
+/*In works State*/
+.checked:before {
+  content: "🛠️" !important;
+  margin-right: 5px;
+}
+.checked:hover:before {
+  content: "✔️" !important;
+}
+.checked:after {
+  content: "Traitement en cours";
+  text-transform: uppercase;
+  padding-left: 5px;
+  font-style: italic;
+  font-size: 0.7rem;
+  color: #fff;
+  background-color: orange;
+  padding: 4px;
+  margin: 5px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: ease-in 0.2s;
+}
+.checked:hover:after {
+  content: "Terminer";
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #fff;
+  padding: 5px;
+  background-color: royalblue;
+  transition: ease-out 0.2s;
+  box-shadow: 2px 2px 2px #000;
 }
 
-.checked:hover:after{
-    content: "clic = Supprimer" !important;
-    text-transform: uppercase !important;
-    font-weight: 600 !important;
-    font-size: 0.7rem !important;
-    color: #fff !important;
-    padding: 5px !important;
-    background-color: red !important;
-    transition:ease-out 0.2s !important;
-    box-shadow: 2px 2px 2px #000 ;
+/*Done State*/
+
+.done:before {
+  content: "✔️" !important;
+  margin-right: 5px;
+}
+.done:hover:before {
+  content: "❌" !important;
+}
+.done:after {
+  content: "Effectué !";
+  text-transform: uppercase;
+  padding-left: 5px;
+  font-style: italic;
+  font-size: 0.7rem;
+  color: #fff;
+  background-color: green;
+  padding: 4px;
+  margin: 5px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: ease-in 0.2s;
+}
+
+.done:hover:after {
+  content: "Supprimer";
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #fff;
+  padding: 5px;
+  background-color: red;
+  transition: ease-out 0.2s;
+  box-shadow: 2px 2px 2px #000;
 }

@@ -48,12 +48,15 @@ form.addEventListener("submit", (e) => {
 list.addEventListener("click", (e) => {
   if (e.target.classList.contains("init")) {
     e.target.classList.add("checked");
+    e.target.classList.remove("init");
     storeList();
   } else if (e.target.classList.contains("checked")) {
     e.target.classList.add("done");
+    e.target.classList.remove("checked");
     storeList();
   } else if (e.target.classList.contains("done")) {
     console.log("done !");
+    e.target.classList.remove("done");
     e.target.remove();
     storeList();
   } else {
